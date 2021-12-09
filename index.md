@@ -77,7 +77,9 @@ After running the code, the chart will look like this:
 
 <img src="outputs/parliament.png" alt="parliament" width="500"/>
 
-   
+
+<br>
+
 ### Dinner at the Great Hall
 
 ### Waffle chart
@@ -115,6 +117,9 @@ house_waffle  # Viewing the waffle
                 
                 
 This is our output:
+
+<br>
+
 <img src="outputs/waffle.png" alt="waffle" width="500"/>
 
 ### Pie chart
@@ -143,6 +148,8 @@ You can play a bit with your preferred colours, but this is the graph we get wit
 
 <img src="outputs/pie.png" alt="pie" width="700"/>
 
+<br>
+
 ### The whomping willow: Tree map
 
 Treemap is an alternative method of visualising the hierarchical structure of our data. Using rectangles assigned to each category it also illustrates its quantity.
@@ -167,6 +174,8 @@ ggplot(chr, aes(fill = House, area = n )) +
 Here we can see the output:
 
 <img src="outputs/tree.png" alt="tree" width="700"/>
+
+<br>
 
 ### Wingardium leviosa: Word cloud
 
@@ -193,13 +202,15 @@ This is our output:
 
 <img src="outputs/wordcloud.png" alt="wordcloud" width="500"/>
 
+<br>
+
 You can get more creative with the plot by choosing the shape, colours or orientation of the text:
    
 
 ```
 wordcloud2(data=hair, size=1.6, shape='star', color='red', backgroundColor="black")
 ```
-
+<br>
 
 ### Give your barchart a little magic: Radial barchart
 
@@ -224,7 +235,11 @@ ggplot(chr, aes(x = House, y = n, fill = House)) +
    
 This is the chart we get:
 
+<br>
+
 <img src="outputs/radial.png" alt="radial" width="500"/>
+
+<br>
 
 As you can see in the code above, setting a theme like this takes a lot of time and is not very efficient, especially if you use it often. In that case, it is more practical to create a custom theme. You can do this by assigning it a name and using the function() command to specify the different aspects of the theme such as whether axes labels appear, if they do their size and style. Then, when you are plotting your graphs, you can add your custom theme as a layer in ggplot.
 
