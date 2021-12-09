@@ -303,6 +303,9 @@ for (j in 0:35) {
 ```
 
 And this is how magical our output looks like:
+
+<br>
+
 <img src="outputs/spell.png" alt="spell" width="500"/>
 
 <br>
