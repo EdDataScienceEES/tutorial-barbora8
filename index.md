@@ -75,7 +75,7 @@ ggplot(semicircle, aes(x = x, y = y, colour = House)) +
 ```
 After running the code, the chart will look like this:
 
-<p style="text-align:center;"><img src="outputs/parliament.png" alt="parliament" width="500"/>
+<img src="outputs/parliament.png" alt="parliament" width="500"/>
 
    
 ### Dinner at the Great Hall
@@ -115,7 +115,7 @@ house_waffle  # Viewing the waffle
                 
                 
 This is our output:
-<p style="text-align:center;"><img src="outputs/waffle.png" alt="waffle" width="500"/>
+<img src="outputs/waffle.png" alt="waffle" width="500"/>
 
 ### Pie chart
 
@@ -141,7 +141,7 @@ ggplot(chr, aes(x= "", y= n, fill=House)) +     # Filling pie with colours
    
 You can play a bit with your preferred colours, but this is the graph we get with this code:
 
-<p style="text-align:center;"><img src="outputs/pie.png" alt="pie" width="700"/>
+<img src="outputs/pie.png" alt="pie" width="700"/>
 
 ### The whomping willow: Tree map
 
@@ -166,7 +166,7 @@ ggplot(chr, aes(fill = House, area = n )) +
    
 Here we can see the output:
 
-<p style="text-align:center;"><img src="outputs/tree.png" alt="tree" width="700"/>
+<img src="outputs/tree.png" alt="tree" width="700"/>
 
 ### Wingardium leviosa: Word cloud
 
@@ -191,7 +191,7 @@ wordcloud2(data=hair, size=1.6, shape='triangle')
 This is our output:
 
 
-<p style="text-align:center;"><img src="outputs/wordcloud.png" alt="wordcloud" width="500"/>
+<img src="outputs/wordcloud.png" alt="wordcloud" width="500"/>
 
 You can get more creative with the plot by choosing the shape, colours or orientation of the text:
    
@@ -224,7 +224,7 @@ ggplot(chr, aes(x = House, y = n, fill = House)) +
    
 This is the chart we get:
 
-<p style="text-align:center;"><img src="outputs/radial.png" alt="radial" width="500"/>
+<img src="outputs/radial.png" alt="radial" width="500"/>
 
 As you can see in the code above, setting a theme like this takes a lot of time and is not very efficient, especially if you use it often. In that case, it is more practical to create a custom theme. You can do this by assigning it a name and using the function() command to specify the different aspects of the theme such as whether axes labels appear, if they do their size and style. Then, when you are plotting your graphs, you can add your custom theme as a layer in ggplot.
 
@@ -288,7 +288,7 @@ for (j in 0:35) {
 ```
 
 And this is how magical our output looks like:
-<p style="text-align:center;"><img src="outputs/spell.png" alt="spell" width="500"/>
+<img src="outputs/spell.png" alt="spell" width="500"/>
 
 <br>
    
