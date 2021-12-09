@@ -49,19 +49,26 @@ chr <- hp_characters %>%
   tally() %>% 
   ungroup()
 
-house_waffle <- waffle(c(Gryffindor = 38, Hufflepuff = 13, Slytherin = 28, Ravenclaw = 18, NoHouse = 39, Durmstrang  = 1, Beauxbatons = 3), rows = 10)
+house_waffle <- waffle(c(Slytherin = 28, Gryffindor = 38, Ravenclaw = 18, NoHouse = 39, Durmstrang  = 1, Hufflepuff = 13, Beauxbatons = 3), rows = 10)
 
+house_waffle
 
-iron(house_waffle)
 
 
 # 4. TREE MAP ----
 ggplot(chr, aes(fill = House, area = n )) +
-  geom_treemap()
+  geom_treemap() +
+  scale_fill_manual(values= c("Beauxbatons Academy of Magic"= "orange",
+                              "NoHouse"="grey",
+                              "Durmstrang Institute"="black", 
+                              "Gryffindor"="darkred", 
+                              "Slytherin"="darkgreen", 
+                              "Hufflepuff"="yellow", 
+                              "Ravenclaw"="darkblue"))
 
 # 5. PARLIAMENT ----
 
-data <- parliament_data()
+
 # Create the data frame to be used
 semicircle <- parliament_data(election_data = chr,
                               type = "semicircle", # Parliament type
@@ -71,23 +78,25 @@ semicircle <- parliament_data(election_data = chr,
 ggplot(semicircle, aes(x = x, y = y, colour = House)) +
   geom_parliament_seats() + 
   theme_ggparliament() +
-  labs(title = "Hogwarts Parliament") 
+  
+  labs(title = "Hogwarts parliament") 
 
 # 6. PIECHART ----
+
+
 ggplot(chr, aes(x= "", y= n, fill=House)) +
   geom_bar(stat="identity", width=1) +
   coord_polar("y", start=0) +
   theme_map() +
-  theme(legend.position = "right")
+  scale_fill_manual(values= c("Beauxbatons Academy of Magic"= "orange","NoHouse"="grey","Durmstrang Institute"="black", "Gryffindor"="darkred", "Slytherin"="darkgreen", "Hufflepuff"="yellow", "Ravenclaw"="darkblue"))+
+  theme(legend.position = "right") 
+
 
 # 7. WORD CLOUD ----
 
 # library
 # install.packages("wordcloud2")
 library(wordcloud2) 
-
-# have a look to the example dataset
-head(demoFreq)
 
 hair <- hp_characters %>%
   group_by(Hair.colour) %>%
@@ -100,11 +109,38 @@ wordcloud2(data=hair, size=1.6, shape = 'triangle')
 
 # 8. Radial barchart ----
 
+
+
 ggplot(chr, aes(x = House, y = n, fill = House)) + 
   geom_bar(stat = "identity") +
   coord_polar(start = 0) +
-  theme_bw()
+  theme_bw() +
+  theme(axis.text.x = element_blank(),
+        axis.title.x = element_blank(),
+        axis.ticks = element_blank(),
+        panel.border = element_blank(),
+        panel.grid = element_blank(),
+        axis.text.y = element_blank(),
+        axis.title.y = element_blank()) +
+  scale_fill_manual(values= c("Beauxbatons Academy of Magic"= "orange","NoHouse"="grey","Durmstrang Institute"="black", "Gryffindor"="darkred", "Slytherin"="darkgreen", "Hufflepuff"="yellow", "Ravenclaw"="darkblue"))
 
+# Creating a theme
+blank_theme <- function() {
+  theme(axis.text.x = element_blank(),
+        axis.title.x = element_blank(),
+        axis.ticks = element_blank(),
+        panel.border = element_blank(),
+        panel.grid = element_blank(),
+        axis.text.y = element_blank(),
+        axis.title.y = element_blank())
+}
+
+ggplot(chr, aes(x = House, y = n, fill = House)) + 
+  geom_bar(stat = "identity") +
+  coord_polar(start = 0) +
+  theme_bw() +
+  blank_theme() +
+  scale_fill_manual(values= c("Beauxbatons Academy of Magic"= "orange","NoHouse"="grey","Durmstrang Institute"="black", "Gryffindor"="darkred", "Slytherin"="darkgreen", "Hufflepuff"="yellow", "Ravenclaw"="darkblue"))
 
 ---
 
@@ -129,7 +165,7 @@ plot(0,0,type="n", xlim=c(-2,32), ylim=c(3,27),
 for (j in 0:35) {
   for (i in 0:35) {
     
-    R <- 8
+    R <- 5
     alpha <- j*10
     X <- 15+R*cos(alpha/180*pi)
     Y <- 15+R*sin(alpha/180*pi)
@@ -154,7 +190,7 @@ for (j in 0:35) {
     x1 <- xc+r*cos(theta)
     y1 <- yc+r*sin(theta)
     
-    lines(x1,y1, col="blue")
+    lines(x1,y1, col="darkblue")
     
   }
 }
