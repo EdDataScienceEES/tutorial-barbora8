@@ -26,7 +26,7 @@ __7. [BONUS: Visualisation of an actual spell aka Data art](#bonus-visualisation
 
 Data visualisation is a graphical representation of the data and is an important part of every project. There many different ways how we can visualise our results, some more common than others.
 
-This tutorial is aimed to show and teach all the muggles and wizards who are interested in coding some _siriusly_ cool and less known types of plots you can generate to visualise your results using Rstudio, which despite looking pretty impressive are relatively easy to make and require only basic knowledge of R. If you are a beginner without previous experience with this language, I would recommend looking at___ first.
+This tutorial is aimed to show and teach all the muggles and wizards who are interested in coding some _siriusly_ cool and less known types of plots you can generate to visualise your results using Rstudio, which despite looking pretty impressive are relatively easy to make and require only basic knowledge of R. If you are a beginner without previous experience with this language, I would recommend looking at these [tutorials](https://ourcodingclub.github.io/tutorials/intro-to-r/) first.
 
 ### Welcome to Hogwarts
 In this tutorial we will be using a dataset on Harry Potter characters, which is publicly available from this [website](https://www.kaggle.com/gulsahdemiryurek/harry-potter-dataset).
@@ -75,7 +75,11 @@ ggplot(semicircle, aes(x = x, y = y, colour = House)) +
 ```
 After running the code, the chart will look like this:
 
-<img src="outputs/parliament.png" alt="parliament" width="500"/>
+<br>
+
+<p align="center">
+  <img src="outputs/parliament.png" alt="parliament" width="500"/>
+</p>
 
 
 <br>
@@ -120,8 +124,10 @@ This is our output:
 
 <br>
 
+<p align="center">
 <img src="outputs/waffle.png" alt="waffle" width="500"/>
-
+</p>
+   
 ### Pie chart
 
 Now let's move to our second course, a pie! Pie charts can be a simple method of presenting your results, but you know what they say: there is beauty in simplicity! And often it is a great choice, as it shows the data in a _siriusly_ nice and clear way.
@@ -146,7 +152,10 @@ ggplot(chr, aes(x= "", y= n, fill=House)) +     # Filling pie with colours
    
 You can play a bit with your preferred colours, but this is the graph we get with this code:
 
+<p align="center">
 <img src="outputs/pie.png" alt="pie" width="700"/>
+</p> 
+   
 
 <br>
 
@@ -173,7 +182,10 @@ ggplot(chr, aes(fill = House, area = n )) +
    
 Here we can see the output:
 
+
+<p align="center">
 <img src="outputs/tree.png" alt="tree" width="700"/>
+</p>
 
 <br>
 
@@ -199,8 +211,9 @@ wordcloud2(data=hair, size=1.6, shape='triangle')
    
 This is our output:
 
-
+<p align="center">
 <img src="outputs/wordcloud.png" alt="wordcloud" width="500"/>
+</p>
 
 <br>
 
@@ -237,7 +250,9 @@ This is the chart we get:
 
 <br>
 
+<p align="center">
 <img src="outputs/radial.png" alt="radial" width="500"/>
+</p>
 
 <br>
 
@@ -306,7 +321,9 @@ And this is how magical our output looks like:
 
 <br>
 
+<p align="center">
 <img src="outputs/spell.png" alt="spell" width="500"/>
+</p>
 
 <br>
    
