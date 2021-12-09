@@ -221,7 +221,6 @@ blank_theme <- function() {
         axis.text.y = element_blank(),
         axis.title.y = element_blank())
 }
-
 ```
 
 
@@ -273,5 +272,7 @@ for (j in 0:35) {
 And this is how magical our output looks like:
 <p style="text-align:center;"><img src="outputs/spell.png" alt="spell" width="500"/>
 
+<br>
+   
 I hope you enjoyed the tutorial! If you have any questions, please send me an owl or if you are a muggle, contact me at:
 barbora.ebringerova@gmail.com
