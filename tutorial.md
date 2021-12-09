@@ -6,9 +6,9 @@ Created by barbora8
 [Example](#example)
 
 ## Tutorial aims:
-__1. Welcome to Hogwarts; Get familiar with less known plots__
+__1. [Welcome to Hogwarts; Get familiar with less known plots](#welcome-to-hogwarts)__
 
-__2. Hogwarts house student parliament; parliament chart__
+__2. [Hogwarts house student parliament; parliament chart](#hogwarts-house-student-parliament-parliament-chart)__
 
 __3. Dinner at the Great Hall;__
 
@@ -46,7 +46,7 @@ hp_characters <- read.csv("data/Characters.csv", sep = ";", na.strings = c("","N
 ```
 **Ready to _visualise_ some magic? Let's begin then!**
 
-### 2. Hogwarts house student parliament; parliament chart
+### Hogwarts house student, parliament parliament chart
 
 First on our list is a parliament chart. Parliament charts are used to visualise seats belonging to different groups we have in our data, usually used for a presentation of election results. In our tutorial we will use the Hogwarts House column to see the distribution of the Harry Potter characters if Hogwarts had a parliament.
 
