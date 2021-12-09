@@ -77,7 +77,8 @@ After running the code, the chart will look like this:
 
 <p style="text-align:center;"><img src="outputs/parliament.png" alt="parliament" width="500"/>
 
-### 3. Dinner at the Great Hall
+   
+### Dinner at the Great Hall
 
 ### Waffle chart
 
@@ -86,6 +87,8 @@ Did you know that waffles are great not only for breakfast, but also for visuali
 A waffle chart illustrates the data of one or multiple categories. It can be used to compare them, or in the case of one category, to show a progress towards our target.
 
 Now we are going to create a simple waffle chart using the houses of our characters from the hp_characters dataset. We start by loading a waffle package.
+   
+ 
 ```
 # Load the library, install if needed
 library(waffle)
@@ -109,6 +112,8 @@ house_waffle <- waffle(c(Slytherin = 28,
 
 house_waffle  # Viewing the waffle
 ```
+                
+                
 This is our output:
 <p style="text-align:center;"><img src="outputs/waffle.png" alt="waffle" width="500"/>
 
@@ -132,6 +137,8 @@ ggplot(chr, aes(x= "", y= n, fill=House)) +     # Filling pie with colours
                               "Ravenclaw"="darkblue"))+
   theme(legend.position = "right")
 ```
+   
+   
 You can play a bit with your preferred colours, but this is the graph we get with this code:
 
 <p style="text-align:center;"><img src="outputs/pie.png" alt="pie" width="700"/>
@@ -141,6 +148,8 @@ You can play a bit with your preferred colours, but this is the graph we get wit
 Treemap is an alternative method of visualising the hierarchical structure of our data. Using rectangles assigned to each category it also illustrates its quantity.
 
 Let's make a nice treemap showing the distribution of each of our houses.
+   
+   
 ```
 # Creating a treemap using our chr subset dataframe
 ggplot(chr, aes(fill = House, area = n )) +
@@ -153,6 +162,8 @@ ggplot(chr, aes(fill = House, area = n )) +
                               "Hufflepuff"="yellow",
                               "Ravenclaw"="darkblue"))
 ```
+   
+   
 Here we can see the output:
 
 <p style="text-align:center;"><img src="outputs/tree.png" alt="tree" width="700"/>
@@ -160,6 +171,8 @@ Here we can see the output:
 ### Wingardium leviosa: Word cloud
 
 Now let's give the words some wings an see them fly! A word cloud is a visualisation method that shows how frequent the words are in our data. This is done by the size of each word being proportional to its frequency. We will start by loading the package wordcloud2.
+   
+   
 ```
 # load the needed library, install if required
 library(wordcloud2)
@@ -173,12 +186,15 @@ hair <- hp_characters %>%
 # Creating the basic plot
 wordcloud2(data=hair, size=1.6, shape='triangle')
 ```
+   
+   
 This is our output:
 
 
 <p style="text-align:center;"><img src="outputs/wordcloud.png" alt="wordcloud" width="500"/>
 
 You can get more creative with the plot by choosing the shape, colours or orientation of the text:
+   
 
 ```
 wordcloud2(data=hair, size=1.6, shape='star', color='red', backgroundColor="black")
@@ -204,6 +220,8 @@ ggplot(chr, aes(x = House, y = n, fill = House)) +
         axis.title.y = element_blank()) +
   scale_fill_manual(values= c("Beauxbatons Academy of Magic"= "orange","NoHouse"="grey","Durmstrang Institute"="black", "Gryffindor"="darkred", "Slytherin"="darkgreen", "Hufflepuff"="yellow", "Ravenclaw"="darkblue"))
 ```
+   
+   
 This is the chart we get:
 
 <p style="text-align:center;"><img src="outputs/radial.png" alt="radial" width="500"/>
@@ -227,9 +245,9 @@ blank_theme <- function() {
 ### BONUS: Visualisation of an actual spell aka Data art
 
 Did you know that even muggles can see spells? Thanks to R, we can now visualise even more abstract things from the wizards' world. This bonus graph is a tricky one, well beyond the basic knowledge of coding, so I won't go into any deep details, but the output is remarkably impressive, so feel free to copy the code, maybe play a bit with the colours and enjoy!
+               
 
 ```
-
 par(mfrow=c(1,1),mar=c(0,0,0,0),oma=c(1,1,1,1))
 plot(0,0,type="n", xlim=c(-2,32), ylim=c(3,27),
      xaxs="i", yaxs="i", axes=FALSE, xlab=NA, ylab=NA,
