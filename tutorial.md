@@ -1,28 +1,27 @@
 
 # Impress your coding mates with these _riddikulusly_ magical data visualizations
 
-Created by barbora8
+#### Created by barbora8
 
-[Example](#example)
 
 ## Tutorial aims:
-__1. [Welcome to Hogwarts; Get familiar with less known plots](#welcome-to-hogwarts)__
+__1. [Welcome to Hogwarts: Get familiar with less known plots](#welcome-to-hogwarts)__
 
-__2. [Hogwarts house student parliament; parliament chart](#hogwarts-house-student-parliament-parliament-chart)__
+__2. [Hogwarts house student parliament: parliament chart](#hogwarts-house-student-parliament-parliament-chart)__
 
 __3. Dinner at the Great Hall;__
 
-   - __Waffle chart__
+   - __[Waffle chart](#waffle-chart)__
    
-   - __Pie chart__
+   - __[Pie chart](#pie-chart)__
    
-__4. The whomping willow; Tree map__
+__4. [The whomping willow: Tree map](#the-whomping-willow-tree-map)__
 
-**5. Wingardium leviosa; Word cloud**
+__5. [Wingardium leviosa: Word cloud](#wingardium-leviosa-word-cloud)__
 
-**6. Give your bar-chart a little magic; Radial bar-chart**
+__6. [Give your barchart a little magic: Radial barchart](#give-your-barchart-a-little-magic-radial-barchart)__
 
-**7. BONUS; Visualisation of a spell aka Data art**
+__7. [BONUS: Visualisation of an actual spell aka Data art](#bonus-visualisation-of-an-actual-spell-aka-data-art)__
 
 
 Data visualisation is a graphical representation of the data and is an important part of every project. There many different ways how we can visualise our results, some more common than others.
@@ -46,7 +45,7 @@ hp_characters <- read.csv("data/Characters.csv", sep = ";", na.strings = c("","N
 ```
 **Ready to _visualise_ some magic? Let's begin then!**
 
-### Hogwarts house student, parliament parliament chart
+### Hogwarts house student: parliament parliament chart
 
 First on our list is a parliament chart. Parliament charts are used to visualise seats belonging to different groups we have in our data, usually used for a presentation of election results. In our tutorial we will use the Hogwarts House column to see the distribution of the Harry Potter characters if Hogwarts had a parliament.
 
@@ -137,7 +136,7 @@ You can play a bit with your preferred colours, but this is the graph we get wit
 
 <p style="text-align:center;"><img src="outputs/pie.png" alt="pie" width="700"/>
 
-### 4. The whomping willow; Tree map
+### The whomping willow: Tree map
 
 Treemap is an alternative method of visualising the hierarchical structure of our data. Using rectangles assigned to each category it also illustrates its quantity.
 
@@ -158,7 +157,7 @@ Here we can see the output:
 
 <p style="text-align:center;"><img src="outputs/tree.png" alt="tree" width="700"/>
 
-### 5. Wingardium leviosa; Word cloud
+### Wingardium leviosa: Word cloud
 
 Now let's give the words some wings an see them fly! A word cloud is a visualisation method that shows how frequent the words are in our data. This is done by the size of each word being proportional to its frequency. We will start by loading the package wordcloud2.
 ```
@@ -186,7 +185,7 @@ wordcloud2(data=hair, size=1.6, shape='star', color='red', backgroundColor="blac
 ```
 
 
-### 6. Add a little magic to your bar-chart; Radial bar-chart
+### Give your barchart a little magic: Radial barchart
 
 Bar-charts can get a bit boring. In wizards' world we add a little pinch of magic to them to make them look more fascinating. Here we will turn a usual boring bar-chart into a radial/circular one.
 
@@ -226,7 +225,7 @@ blank_theme <- function() {
 ```
 
 
-### 7. BONUS; Visualisation of an actual spell aka Data art
+### BONUS: Visualisation of an actual spell aka Data art
 
 Did you know that even muggles can see spells? Thanks to R, we can now visualise even more abstract things from the wizards' world. This bonus graph is a tricky one, well beyond the basic knowledge of coding, so I won't go into any deep details, but the output is remarkably impressive, so feel free to copy the code, maybe play a bit with the colours and enjoy!
 
@@ -276,6 +275,3 @@ And this is how magical our output looks like:
 
 I hope you enjoyed the tutorial! If you have any questions, please send me an owl or if you are a muggle, contact me at:
 barbora.ebringerova@gmail.com
- 
- # Example 
- hi
