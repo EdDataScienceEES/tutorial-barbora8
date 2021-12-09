@@ -43,7 +43,10 @@ Note that in the read.csv function below we specify that the columns are separat
 # Import our data
 hp_characters <- read.csv("data/Characters.csv", sep = ";", na.strings = c("","NA"))
 ```
-**Ready to _visualise_ some magic? Let's begin then!**
+
+![harry](https://user-images.githubusercontent.com/91492654/145493768-52ab50eb-1b26-4450-9bab-e3f41536ebf7.jpeg)
+
+
 
 ### Hogwarts house student: parliament parliament chart
 
