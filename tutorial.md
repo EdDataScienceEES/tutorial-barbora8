@@ -3,23 +3,33 @@
 
 Created by barbora8
 
-## Tutorial aims:
-1. Welcome to Hogwarts; Get familiar with less known plots
-2. Hogwarts house student parliament; parliament chart
-3. Dinner at the Great Hall;
--  Waffle chart
--  Pie chart
-4. The whomping willow; Tree map
-5. Wingardium leviosa; Word cloud
-6. Give your bar-chart a little magic; Radial bar-chart
-7. BONUS; Visualisation of a spell aka Data art
+[Example](#example)
 
+## Tutorial aims:
+__1. Welcome to Hogwarts; Get familiar with less known plots__
+
+__2. Hogwarts house student parliament; parliament chart__
+
+__3. Dinner at the Great Hall;__
+
+   - __Waffle chart__
+   
+   - __Pie chart__
+   
+__4. The whomping willow; Tree map__
+
+**5. Wingardium leviosa; Word cloud**
+
+**6. Give your bar-chart a little magic; Radial bar-chart**
+
+**7. BONUS; Visualisation of a spell aka Data art**
 
 
 Data visualisation is a graphical representation of the data and is an important part of every project. There many different ways how we can visualise our results, some more common than others.
 
 This tutorial is aimed to show and teach all the muggles and wizards who are interested in coding some _siriusly_ cool and less known types of plots you can generate to visualise your results using Rstudio, which despite looking pretty impressive are relatively easy to make and require only basic knowledge of R. If you are a beginner without previous experience with this language, I would recommend looking at___ first.
 
+### Welcome to Hogwarts
 In this tutorial we will be using a dataset on Harry Potter characters, which is publicly available from this [website](https://www.kaggle.com/gulsahdemiryurek/harry-potter-dataset).
 
 In Rstudio we will import our data and load some general libraries (additional packages needed for specific graphs will be downloaded later in the tutorial). You can of course do a little exploring of your data to get familiar with it.
@@ -266,3 +276,6 @@ And this is how magical our output looks like:
 
 I hope you enjoyed the tutorial! If you have any questions, please send me an owl or if you are a muggle, contact me at:
 barbora.ebringerova@gmail.com
+ 
+ # Example 
+ hi
