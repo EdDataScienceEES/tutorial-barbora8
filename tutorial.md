@@ -20,7 +20,7 @@ Data visualisation is a graphical representation of the data and is an important
 
 This tutorial is aimed to show and teach all the muggles and wizards who are interested in coding some _siriusly_ cool and less known types of plots you can generate to visualise your results using Rstudio, which despite looking pretty impressive are relatively easy to make and require only basic knowledge of R. If you are a beginner without previous experience with this language, I would recommend looking at___ first.
 
-In this tutorial we will be using dataset on Harry Potter characters, which is publicly available from this repository.
+In this tutorial we will be using a dataset on Harry Potter characters, which is publicly available from this [website](https://www.kaggle.com/gulsahdemiryurek/harry-potter-dataset).
 
 In Rstudio we will import our data and load some general libraries (additional packages needed for specific graphs will be downloaded later in the tutorial). You can of course do a little exploring of your data to get familiar with it.
 ```
@@ -28,7 +28,9 @@ In Rstudio we will import our data and load some general libraries (additional p
 library(tidyverse)     
 library(ggplot2)
 library(ggthemes)
-
+```
+Note that in the read.csv function below we specify that the columns are separated by ";", we also tell R to replace empty observations with "NA".
+```
 # Import our data
 hp_characters <- read.csv("data/Characters.csv", sep = ";", na.strings = c("","NA"))
 ```
@@ -36,7 +38,7 @@ hp_characters <- read.csv("data/Characters.csv", sep = ";", na.strings = c("","N
 
 ### 2. Hogwarts house student parliament; parliament chart
 
-First on our list is a parliament chart. Parliament charts are used to visualise seats belonging to different groups we have in our data, usually used for a presentation of election results. In our tutorial we will use Hogwarts House column to see the distribution of the Harry Potter characters if Hogwarts had a parliament.
+First on our list is a parliament chart. Parliament charts are used to visualise seats belonging to different groups we have in our data, usually used for a presentation of election results. In our tutorial we will use the Hogwarts House column to see the distribution of the Harry Potter characters if Hogwarts had a parliament.
 
  We need a ggparliament extension in the ggplot package. This allows us to plot the parliament in different layouts, such as semicircle, horseshoe, circle, opposing bench or a classroom. Here we will use the classical semicircle parliament.
 
@@ -44,17 +46,22 @@ First on our list is a parliament chart. Parliament charts are used to visualise
 # Load a needed extension, if needed install first
 library(ggparliament)
 
+# Creating a subset dataframe of the column of our interest- House, let's call it chr
+chr <- hp_characters %>%
+  group_by(House) %>%   
+  tally() %>%           # Counting characters in each House
+  ungroup()             # Good practice to ungroup after grouping
+
 # Create the data frame to be used
-data <- parliament_data()
-semicircle <- parliament_data(election_data = chr,
-                              type = "semicircle", # Parliament type
-                              parl_rows = 6,      # Number of rows of the parliament
-                              party_seats = chr$n) # Seats per party
+semicircle <- parliament_data(election_data = chr,    # Specify data
+                              type = "semicircle",    # Parliament type
+                              parl_rows = 6,          # Number of rows of the parliament
+                              party_seats = chr$n)    # Seats per party
 
 # Plot our chart
 ggplot(semicircle, aes(x = x, y = y, colour = House)) +
   geom_parliament_seats() +
-  theme_ggparliament() +
+  theme_ggparliament() +               # A clean theme for parliament plots
   labs(title = "Hogwarts Parliament")
 ```
 After running the code, the chart will look like this:
@@ -67,82 +74,95 @@ After running the code, the chart will look like this:
 
 Did you know that waffles are great not only for breakfast, but also for visualising your data?
 
-A waffle chart illustrates the data of one or multiple categories. It can be used to compare them, or in a case of one, to show a progress towards our target.
+A waffle chart illustrates the data of one or multiple categories. It can be used to compare them, or in the case of one category, to show a progress towards our target.
 
-Now we are going to create a simple waffle chart using the houses of our characters from the hp_characters dataset. We start with loading a waffle package
+Now we are going to create a simple waffle chart using the houses of our characters from the hp_characters dataset. We start by loading a waffle package.
 ```
 # Load the library, install if needed
 library(waffle)
 
-# Replacing NAs in our data with "No House"
+# Checking the House categories
 unique(hp_characters$House)
 
+# Replacing NAs in our data with "No House"
 hp_characters <- hp_characters %>%
   mutate(House = replace_na(House, "No House"))  
 
-# Creating a subset dataframe of the column of our interest- House, let's call it chr
-chr <- hp_characters %>%
-  group_by(House) %>%
-  tally() %>%
-  ungroup()
-
 # Generating our waffle chart
-house_waffle <- waffle(c(G = 38, H = 13, NH = 39, S = 28, R = 18, D = 1, B = 3), rows = 10)
-iron(house_waffle)
+house_waffle <- waffle(c(Slytherin = 28,
+                        Gryffindor = 38,
+                        Ravenclaw = 18,
+                        NoHouse = 39,
+                        Durmstrang  = 1,
+                        Hufflepuff = 13,
+                        Beauxbatons = 3),
+                rows = 10)
+
+house_waffle  # Viewing the waffle
 ```
 This is our output:
 <p style="text-align:center;"><img src="outputs/waffle.png" alt="waffle" width="500"/>
 
 ### Pie chart
 
-Now let's move to our second course, a pie! Pie charts might be a simple method of presenting your results, but you know what they say: there is a beauty in simplicity! And often it is a great chouce, as it shows the data in a _siriusly_ nice and clear way.
+Now let's move to our second course, a pie! Pie charts can be a simple method of presenting your results, but you know what they say: there is beauty in simplicity! And often it is a great choice, as it shows the data in a _siriusly_ nice and clear way.
 
 
 ```
 # Creating a pie chart using our chr subset dataframe
-ggplot(chr, aes(x= "", y= n, fill=House)) +
+ggplot(chr, aes(x= "", y= n, fill=House)) +     # Filling pie with colours
   geom_bar(stat="identity", width=1) +
   coord_polar("y", start=0) +
-  theme_map() +
-  scale_fill_manual(values= c("Beauxbatons Academy of Magic"= "orange","NoHouse"="grey","Durmstrang Institute"="black", "Gryffindor"="darkred", "Slytherin"="darkgreen", "Hufflepuff"="yellow", "Ravenclaw"="darkblue"))+
+  theme_map() +                                 # Blank theme for plots
+  scale_fill_manual(values= c("Beauxbatons Academy of Magic"= "orange",
+                              "NoHouse"="grey",
+                              "Durmstrang Institute"="black",
+                              "Gryffindor"="darkred",
+                              "Slytherin"="darkgreen",
+                              "Hufflepuff"="yellow",
+                              "Ravenclaw"="darkblue"))+
   theme(legend.position = "right")
 ```
-You can play a bit with your proffered colours, but this is the graph we get with this code:
+You can play a bit with your preferred colours, but this is the graph we get with this code:
 
-<p style="text-align:center;"><img src="outputs/pie.png" alt="pie" width="500"/>
+<p style="text-align:center;"><img src="outputs/pie.png" alt="pie" width="700"/>
 
 ### 4. The whomping willow; Tree map
 
-Treemap is an alternative method of visualising the hierarchical structure of our data. Using a rectangles assigned to each category it also illustrates its quantity.
+Treemap is an alternative method of visualising the hierarchical structure of our data. Using rectangles assigned to each category it also illustrates its quantity.
 
 Let's make a nice treemap showing the distribution of each of our houses.
 ```
 # Creating a treemap using our chr subset dataframe
 ggplot(chr, aes(fill = House, area = n )) +
   geom_treemap() +
-  scale_fill_manual(values= c("Beauxbatons Academy of Magic"= "orange","NoHouse"="grey","Durmstrang Institute"="black", "Gryffindor"="darkred", "Slytherin"="darkgreen", "Hufflepuff"="yellow", "Ravenclaw"="darkblue"))
+  scale_fill_manual(values= c("Beauxbatons Academy of Magic"= "orange",
+                              "NoHouse"="grey",
+                              Durmstrang Institute"="black",
+                              "Gryffindor"="darkred",
+                              "Slytherin"="darkgreen",
+                              "Hufflepuff"="yellow",
+                              "Ravenclaw"="darkblue"))
 ```
 Here we can see the output:
 
-<p style="text-align:center;"><img src="outputs/tree.png" alt="tree" width="500"/>
+<p style="text-align:center;"><img src="outputs/tree.png" alt="tree" width="700"/>
 
 ### 5. Wingardium leviosa; Word cloud
 
-Now let's give the words some wings an see them fly! A word cloud is a visualisation method that shows how frequent are the words in our data. This is done by the size of each word being proportional to its frequency. We will start by loading the extension wordcloud2
+Now let's give the words some wings an see them fly! A word cloud is a visualisation method that shows how frequent the words are in our data. This is done by the size of each word being proportional to its frequency. We will start by loading the package wordcloud2.
 ```
 # load the needed library, install if required
 library(wordcloud2)
 
-# have a look to the example dataset
-head(demoFreq)
-
+# Let's create a subset dataset for the hair colour of the characters
 hair <- hp_characters %>%
   group_by(Hair.colour) %>%
   tally() %>%
   ungroup()
 
 # Creating the basic plot
-wordcloud2(data=hair, size=1.6)
+wordcloud2(data=hair, size=1.6, shape='triangle')
 ```
 This is our output:
 
@@ -158,7 +178,7 @@ wordcloud2(data=hair, size=1.6, shape='star', color='red', backgroundColor="blac
 
 ### 6. Add a little magic to your bar-chart; Radial bar-chart
 
-Bar-charts can get a bit boring. In wizards' world we add them a little pinch of magic to make them look more fascinating. Here we will turn an usual boring bar-chart into a radial/circular one.
+Bar-charts can get a bit boring. In wizards' world we add a little pinch of magic to them to make them look more fascinating. Here we will turn a usual boring bar-chart into a radial/circular one.
 
 ```
 # Creating a radial bar-chart
@@ -178,6 +198,23 @@ ggplot(chr, aes(x = House, y = n, fill = House)) +
 This is the chart we get:
 
 <p style="text-align:center;"><img src="outputs/radial.png" alt="radial" width="500"/>
+
+As you can see in the code above, setting a theme like this takes a lot of time and is not very efficient, especially if you use it often. In that case, it is more practical to create a custom theme. You can do this by assigning it a name and using the function() command to specify the different aspects of the theme such as whether axes labels appear, if they do their size and style. Then, when you are plotting your graphs, you can add your custom theme as a layer in ggplot.
+
+```
+# Creating a theme
+blank_theme <- function() {
+  theme(axis.text.x = element_blank(),
+        axis.title.x = element_blank(),
+        axis.ticks = element_blank(),
+        panel.border = element_blank(),
+        panel.grid = element_blank(),
+        axis.text.y = element_blank(),
+        axis.title.y = element_blank())
+}
+
+```
+
 
 ### 7. BONUS; Visualisation of an actual spell aka Data art
 
@@ -227,5 +264,5 @@ for (j in 0:35) {
 And this is how magical our output looks like:
 <p style="text-align:center;"><img src="outputs/spell.png" alt="spell" width="500"/>
 
-I hope you enjoyed the tutorial! If you have any questions, please contact me at:
+I hope you enjoyed the tutorial! If you have any questions, please send me an owl or if you are a muggle, contact me at:
 barbora.ebringerova@gmail.com
