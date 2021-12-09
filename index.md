@@ -1,5 +1,5 @@
 
-# Impress your coding mates with these _riddikulusly_ magical data visualizations
+# Impress your coding mates with these _riddikulusly_ magical data visualizations 
 
 #### Created by barbora8
 
